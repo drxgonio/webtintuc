@@ -1,0 +1,153 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- meta character set -->
+		<meta charset="UTF-8"/>
+		<!-- Site Title -->
+		<title>Traffic News - Tin tức mới</title>
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"/>
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" th:href="@{/css/linearicons.css}" />
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+		<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+		<link rel="stylesheet" th:href="@{/css/magnific-popup.css}" />
+		<link rel="stylesheet" th:href="@{/css/nice-select.css}" />
+		<link rel="stylesheet" th:href="@{/css/animate.min.css}" />
+		<link rel="stylesheet" th:href="@{/css/owl.carousel.css}" />
+		<link rel="stylesheet" th:href="@{/css/jquery-ui.css}" />
+		<link rel="stylesheet" th:href="@{/css/main.css}" />
+	</head>
+	<body>
+		<header>
+			<div class="logo-wrap">
+				<div class="container">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-lg-12 col-md-12 col-sm-12 logo-left no-padding text-center">
+							<a href="admin_TC.html">
+								<img class="img-fluid" src="img/logo.png" alt=""/>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						</div>
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right" style="padding-top: 15px">
+							<h4>Hello, <a href="QLTaiKhoan.html" th:text="${session.usernamead}"></a></h4>						
+						</div>
+						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+							<button type="button" class="btn btn-warning"><a href="trangchu.html" style="color: white">Đăng xuất</a></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="container main-menu" id="main-menu">
+			<div class="row align-items-center justify-content-between">
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li class="menu-active"><a href="admin_TC.html">Trang chủ</a></li>
+						<li class="menu-has-children"><a href="QLTinTuc.html">Quản
+								lý tin tức</a></li>
+						<li><a href="QLTaiKhoan.html">Tài khoản cá nhân</a></li>
+					</ul>
+				</nav>
+				<!-- #nav-menu-container -->
+				<div class="navbar-right">
+					<form class="Search" th:action="@{/search}">
+						<input type="text" class="form-control Search-box"
+							name="Search-box" id="Search-box" placeholder="Search" /> <label
+							for="Search-box" class="Search-box-label"> <span
+							class="lnr lnr-magnifier"></span>
+						</label> <span class="Search-close"> <span class="lnr lnr-cross"></span>
+						</span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</header>
+		
+		<div class="site-main-container">
+
+			<!-- Start latest-post Area -->
+			<section class="latest-post-area pb-120">
+				<div class="container no-padding">
+					<div class="row">
+						<div class="col-lg-1"></div>
+						<div class="col-lg-10 post-list">
+							<!-- Start latest-post Area -->
+							<div class="latest-post-wrap">
+								<h4 class="cat-title">Kết quả tìm kiếm: <b th:text="${keysearch}"></b></h4>
+							<th:block th:each="tintuc,pos:${listSearch}">
+								<div class="single-latest-post row align-items-center">
+									<div class="col-lg-5 post-left">
+										<div class="feature-img relative">
+											<div class="overlay overlay-bg"></div>
+											<img class="img-fluid" th:src="@{${tintuc.anh}}" alt="" />
+										</div>
+										<ul class="tags">
+											<li><a href="#" th:text="${tintuc.luotxem +' lượt xem'}"></a></li>
+										</ul>
+									</div>
+									<div class="col-lg-7 post-right">
+										<a th:href="@{/{id}(id=${tintuc.matintuc})}">
+											<h4 th:text="${tintuc.tieude}"></h4>
+										</a>
+										<ul class="meta">
+											<li><a href="#" th:text="${tintuc.tacgia}"><span class="lnr lnr-user"></span></a></li>
+											<li><a href="#" th:text="${tintuc.ngay}"><span class="lnr lnr-calendar-full"></span></a></li>
+										</ul>
+										<!-- <p class="excert" th:text="${#strings.abbreviate(tintuc.noidung,150)}"></p> -->
+									</div>
+								</div>
+							</th:block>
+						</div>
+							<!-- End latest-post Area -->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End latest-post Area -->
+		</div>
+		
+		<!-- start footer Area -->
+		<footer class="footer-area section-gap">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 logo-left no-padding text-center">
+							<a href="trangchu.html">
+								<img class="img-fluid" src="img/logo.png" alt=""/>
+							</a>
+						</div>
+				</div>
+			    <div class="text-center" style="padding-top: 20px">
+			    	<p class="footer-text m-0 col-lg-12 col-md-12" style="text-align: center; color: white;">@Road traffic news by Student HCMUTE, 2019</p>
+			    </div>
+				<div class="footer-bottom row text-center">
+					<div class="col-lg-12 col-md-12 footer-social text-center">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End footer Area -->
+		<script src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+		</script>
+		<script src="@{/js/vendor/bootstrap.min.js}"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+		<script src="@{/js/easing.min.js}"></script>
+		<script src="@{/js/hoverIntent.js}"></script>
+		<script src="@{/js/superfish.min.js}"></script>
+		<script src="@{/js/jquery.ajaxchimp.min.js}"></script>
+		<script src="@{/js/jquery.magnific-popup.min.js}"></script>
+		<script src="@{/js/mn-accordion.js}"></script>
+		<script src="@{/js/jquery-ui.js}"></script>
+		<script src="@{/js/jquery.nice-select.min.js}"></script>
+		<script src="@{/js/owl.carousel.min.js}"></script>
+		<script src="@{/js/mail-script.js}"></script>
+		<script src="@{/js/main.js}"></script>
+	</body>
+</html>
